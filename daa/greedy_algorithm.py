@@ -45,6 +45,7 @@ if __name__ == "__main__":
     coins = [1, 5, 10, 25]
     amount = 63
     print("Coin Change Solution:", coin_change_greedy(coins, amount))
+    print("Coin Change Solution:", result)
 
     # File Merging Example
     file_sizes = [4, 8, 6, 12]
