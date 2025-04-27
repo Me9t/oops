@@ -1,0 +1,21 @@
+import socket
+
+def start_server():
+    with socket.socket() as server_socket:
+        server_socket.bind(('localhost', 9999))
+        server_socket.listen(1)
+        print("Echo Server listening on port 9999...")
+        
+        conn, addr = server_socket.accept()
+        with conn:
+            print(f"Connected by {addr}")
+            while True:
+                data = conn.recv(1024).decode()
+                if not data or data.lower() == 'exit':
+                    break
+                print(f"Received: {data}")
+                conn.sendall(data.encode())
+            print("Connection closed")
+
+if __name__ == "__main__":
+    start_server()
